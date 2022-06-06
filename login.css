@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@400;700&display=swap');
+
+
+body{
+  font-family: 'Open Sans', 'Lato', sans-serif;
+}
+
+
+#logincontent{
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    width: 40%;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-top: 10%;
+}
+
+.forminput{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.forminput input{
+    height: 2rem;
+}
+
+label{
+    text-align: start;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#btnSend {
+    font-size: 1.25em;
+    font-weight: bold;
+    background-color: #000;
+    border: none;
+    padding: .5em 1em;
+    color: #fff;
+    box-shadow: 0 0 0 2px #000 inset;
+    border-radius: .25em;
+    cursor: pointer;
+    transition: background .4s ease, color .4s ease;
+  }
+  
+  #btnSend:hover {
+    box-shadow: 0 0 0 2px #000 inset;
+    background-color: #FFF;
+    color: #000;
+}
