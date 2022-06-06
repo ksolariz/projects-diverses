@@ -1,0 +1,77 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static "accounts/css/login.css"%}">
+
+<div hidden id="forgotpassword">
+    {% include "accounts/modals/forgotpass.html"%}
+</div>
+
+<body>
+    
+<form id="newform">
+<div id="logincontent" class="grid-mode">   
+    <h1 class="h1title">{{texts.Signinh1}}</h1>
+    <div id="usernamefield" class="forminput">    
+        <label for="mainusername">{{texts.username}}:</label>
+        <input type="text" id="mainusername" maxlength=25>
+    </div>
+    
+    <div  id="passfield" class="forminput">
+        <label>{{texts.password}}:</label>
+        <input type="password" type="text" id="password" maxlength=50>
+    </div>
+
+    <div style="text-align-last: right; cursor:pointer">
+        <a onclick="showhide(forgotpassword)">{{texts.forgotpassword}}</a>
+    </div>
+    <br>
+    <div id="validations">
+    </div>
+    <input id="btnSend" style="margin: 1vw auto 0vw auto;" type="button" class="mainbutton" value="{{texts.btnenviar}}"
+    onclick="validar('{% url 'login_page' %}', newform, validations)">
+</div>
+</form>
+</body>
+
+<script src="{% static 'accounts/js/functions.js'%}"></script>
+
+
+
+</section>
+
+
+
+<script>
+async function validar(url, form, object){
+data = createData('login', form)
+if (data['mainusername'] == ''){
+    object.innerHTML ='<li>{{texts.emptyfield2}}</li>'
+    object.style['color'] = 'red'
+    mainusername.style['background-color'] = 'pink'
+    return
+} else {
+    mainusername.style['background-color'] = 'white'
+}
+if (data['password'] == ''){
+    object.innerHTML ='<li>{{texts.emptyfield2}}</li>'
+    object.style['color'] = 'red'
+    password.style['background-color'] = 'pink'
+    return
+} else {
+    password.style['background-color'] = 'white'
+}
+
+obj = await fetchobject(url,data, object)
+if (obj.includes('ACCEPTKEY')){
+    location.href = "{% url 'logged_page' %}" // redirect your login
+}
+
+if ( obj.includes('CONFIRMATIONKEY') )
+    object.style['color'] = 'green'
+else    
+    object.style['color'] = 'red'
+
+
+}
+
+</script>
